@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Dá Hora Filmes",
+    "slug": "dahora-filmes",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/dahora.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/splash-dahora.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-dahora.png",
+        "backgroundColor": "#000000"
+      }
+    }
+  }
+}
