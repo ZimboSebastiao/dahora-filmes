@@ -87,7 +87,7 @@ const estilos = StyleSheet.create({
   },
   titulo: {
     fontFamily: "Monoton-Regular",
-    fontSize: 20,
+    fontSize: 28,
     color: "#5a51a6",
   },
 
