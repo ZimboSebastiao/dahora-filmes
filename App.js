@@ -41,7 +41,7 @@ export default function App() {
       <SafeAreaView style={estilos.container} onLayout={aoAtualizarLayout}>
         <View style={estilos.viewLogo}>
           <Image source={logo} style={estilos.logo} />
-          <Text>Dá Hora Filmes</Text>
+          <Text style={estilos.titulo}>Dá Hora Filmes</Text>
         </View>
 
         <View style={estilos.viewBotoes}>
@@ -85,6 +85,12 @@ const estilos = StyleSheet.create({
     width: 128,
     height: 128,
   },
+  titulo: {
+    fontFamily: "Monoton-Regular",
+    fontSize: 20,
+    color: "#5a51a6",
+  },
+
   viewBotoes: {
     flex: 2,
     flexDirection: "row",
