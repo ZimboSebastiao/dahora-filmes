@@ -2,12 +2,11 @@ import { StyleSheet } from "react-native";
 import SafeContainer from "../components/SafeContainer";
 import logo from "../../assets/images/logo.png";
 import { Ionicons } from "@expo/vector-icons";
-import { Image, Pressable, StatusBar, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 
 export default function Home() {
   return (
     <>
-      <StatusBar barStyle="light-content" />
       <SafeContainer>
         <View style={estilos.viewLogo}>
           <Image source={logo} style={estilos.logo} />
