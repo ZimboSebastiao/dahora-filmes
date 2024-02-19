@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import {
   Button,
   Image,
@@ -11,35 +10,13 @@ import {
 } from "react-native";
 import logo from "./assets/images/logo.png";
 import { Ionicons } from "@expo/vector-icons";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-
-// Manter a tela splash visível enquanto não programrmos a ação de ocultar
-SplashScreen.preventAutoHideAsync();
+import SafeContainer from "./src/components/SafeContainer";
 
 export default function App() {
-  const [fontsLoaded, fontError] = useFonts({
-    "Monoton-Regular": require("./assets/fonts/Monoton-Regular.ttf"),
-    NotoSans: require("./assets/fonts/NotoSans-VariableFont.ttf"),
-  });
-
-  // função atrelada ao hook callback para garantir que os dados serão armazenado no cache da memória
-  const aoAtualizarLayout = useCallback(async () => {
-    // se estiver tudo ok com o carregamento
-    if (fontsLoaded || fontError) {
-      // escondemos a splashScreen
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
-
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <SafeAreaView style={estilos.container} onLayout={aoAtualizarLayout}>
+      <SafeContainer>
         <View style={estilos.viewLogo}>
           <Image source={logo} style={estilos.logo} />
           <Text style={estilos.titulo}>Dá Hora Filmes</Text>
@@ -75,18 +52,12 @@ export default function App() {
             </Text>
           </Pressable>
         </View>
-      </SafeAreaView>
+      </SafeContainer>
     </>
   );
 }
 
 const estilos = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   viewLogo: {
     flex: 3,
     width: "80%",
