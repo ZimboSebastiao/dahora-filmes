@@ -94,8 +94,8 @@ const estilos = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 128,
-    height: 128,
+    width: 144,
+    height: 144,
   },
   titulo: {
     fontFamily: "Monoton-Regular",
@@ -111,8 +111,7 @@ const estilos = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   botao: {
-    borderStyle: "solid",
-    borderWidth: 2,
+    color: "#5451a6",
     padding: 16,
     backgroundColor: "#5451a6",
   },
@@ -123,11 +122,14 @@ const estilos = StyleSheet.create({
     fontSize: 16,
   },
   viewRodape: {
-    width: "80%",
-    backgroundColor: "red",
+    width: "100%",
+    backgroundColor: "#5451a6",
     flex: 0.5,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  botaoRodape: {
+    padding: 16,
   },
 });
