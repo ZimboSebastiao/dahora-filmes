@@ -29,7 +29,7 @@ export default function Sobre() {
             Linking.openURL("https://www.themoviedb.org/?language=pt-BR")
           }
         >
-          <Image source={logo} />
+          <Image resizeMode="contain" source={logo} />
         </Pressable>
 
         <Text style={estilos.texto}>
@@ -69,8 +69,7 @@ const estilos = StyleSheet.create({
     color: "#5351a6",
   },
   imagem: {
-    justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    marginVertical: 8,
   },
 });
