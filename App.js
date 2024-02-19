@@ -20,6 +20,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     "Monoton-Regular": require("./assets/fonts/Monoton-Regular.ttf"),
+    NotoSans: require("./assets/fonts/NotoSans-VariableFont.ttf"),
   });
 
   // função atrelada ao hook callback para garantir que os dados serão armazenado no cache da memória
@@ -106,6 +107,9 @@ const estilos = StyleSheet.create({
   },
   textoBotao: {
     color: "#fff",
+    fontFamily: "NotoSans",
+    fontWeight: "bold",
+    fontSize: 16,
   },
   viewRodape: {
     width: "80%",
