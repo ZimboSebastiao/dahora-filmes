@@ -23,14 +23,15 @@ export default function Sobre() {
           Movie Database (TMDb).
         </Text>
 
-        <Pressable
-          style={estilos.imagem}
-          onPress={() =>
-            Linking.openURL("https://www.themoviedb.org/?language=pt-BR")
-          }
-        >
-          <Image resizeMode="contain" source={logo} />
-        </Pressable>
+        <View style={estilos.imagem}>
+          <Pressable
+            onPress={() =>
+              Linking.openURL("https://www.themoviedb.org/?language=pt-BR")
+            }
+          >
+            <Image resizeMode="contain" source={logo} />
+          </Pressable>
+        </View>
 
         <Text style={estilos.texto}>
           Ao localizar um filme, o usuário pode visualizar informações como
