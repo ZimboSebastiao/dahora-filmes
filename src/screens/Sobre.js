@@ -71,5 +71,6 @@ const estilos = StyleSheet.create({
   imagem: {
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
   },
 });
