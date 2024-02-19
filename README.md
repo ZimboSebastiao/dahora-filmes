@@ -15,6 +15,7 @@ Para mais detalhes sobre o processo veja a documentação do Expo Fonts e do Exp
 
 - https://docs.expo.dev/versions/latest/sdk/font/
 - https://docs.expo.dev/versions/latest/sdk/splash-screen/
+- https://docs.expo.dev/guides/icons/
 
 ## Dica
 
