@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./src/screens/Home";
 import Sobre from "./src/screens/Sobre";
 import Privacidade from "./src/screens/Privacidade";
+import BuscarFilmes from "./src/screens/BuscarFilmes";
 
 // Criação/inicialização do mecanismo Stack
 
@@ -33,6 +34,12 @@ export default function App() {
             options={{ title: "Conheça nosso App" }}
           />
           <Stack.Screen name="Privacidade" component={Privacidade} />
+
+          <Stack.Screen
+            name="BuscarFilmes"
+            component={BuscarFilmes}
+            options={{ title: "Qual filme quer pesquisar?" }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
