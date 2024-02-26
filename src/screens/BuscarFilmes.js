@@ -17,7 +17,7 @@ export default function BuscarFilmes() {
 
   const handleInputSubmit = () => {
     if (text.trim() === "") {
-      Alert.alert("Opa", "Por favor, preencha o campo antes de enviar.");
+      Alert.alert("Ops", "Você deve digitar um filme!");
     } else {
       Vibration.vibrate();
       Alert.alert("Você procurou por:", text);
