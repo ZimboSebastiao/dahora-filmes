@@ -4,7 +4,7 @@ import logo from "../../assets/images/logo.png";
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Pressable, Text, View } from "react-native";
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <>
       <SafeContainer>
@@ -29,14 +29,20 @@ export default function Home() {
         </View>
 
         <View style={estilos.viewRodape}>
-          <Pressable style={estilos.botaoRodape}>
+          <Pressable
+            style={estilos.botaoRodape}
+            onPress={() => navigation.navigate("Privacidade")}
+          >
             <Text style={estilos.textoBotao}>
               <Ionicons name="lock-closed" size={16} color="white" />
               Privacidade
             </Text>
           </Pressable>
 
-          <Pressable style={estilos.botaoRodape}>
+          <Pressable
+            style={estilos.botaoRodape}
+            onPress={() => navigation.navigate("Sobre")}
+          >
             <Text style={estilos.textoBotao}>
               <Ionicons name="information-circle" size={16} color="white" />
               Sobre
