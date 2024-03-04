@@ -2,12 +2,15 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import SafeContainer from "../components/SafeContainer";
 
+// Prop route
+// Prop especial e definida pelo react Navigation. Através dela é possivel acessar valores passados por meio de navegação entre elas
 export default function Resultados({ route }) {
-  console.log(route.params.filme);
+  // capturando o parâmetro filme vindo de BuscarFilmes
+  const { filme } = route.params;
   return (
     <SafeContainer>
       <View style={estilos.subContainer}>
-        <Text style={estilos.texto}>Você buscou por:</Text>
+        <Text style={estilos.texto}>Você buscou por: {filme}</Text>
       </View>
     </SafeContainer>
   );
