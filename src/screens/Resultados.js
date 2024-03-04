@@ -14,11 +14,22 @@ export default function Resultados({ route }) {
   const { filme } = route.params;
 
   useEffect(() => {
-    async function BuscarFilmes() {
+    async function buscarFilmes() {
       try {
-        const resposta = await api.get("");
-      } catch (error) {}
+        const resposta = await api.get(`/search/movie`, {
+          params: {
+            include_adult: false,
+            language: "pt-BR",
+            query: filme,
+            api_key: apiKey,
+          },
+        });
+        console.log(resposta.data);
+      } catch (error) {
+        console.error("Deu ruim " + error.message);
+      }
     }
+    buscarFilmes();
   }, []);
 
   return (
