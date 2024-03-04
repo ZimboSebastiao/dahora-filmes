@@ -5,74 +5,73 @@ import {
   Vibration,
   Alert,
   Button,
-  ScrollView,
   TextInput,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import SafeContainer from "../components/SafeContainer";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function BuscarFilmes() {
-  const [text, onChangeText] = React.useState("");
+  const [filme, setFilme] = useState("");
 
-  const handleInputSubmit = () => {
-    if (text.trim() === "") {
-      Alert.alert("Ops", "Você deve digitar um filme!");
-    } else {
-      Vibration.vibrate();
-      Alert.alert("Você procurou por:", text);
+  // Capturando e registrando em state o filme que o usuario deseja pesquisar
+  const filmeDigitado = (valorDigitado) => {
+    // valorDigitado á um parametro automatico vindo do evento onChangeText
+    setFilme(valorDigitado);
+    // console.log(valorDigitado);
+  };
+
+  const buscarFilmes = () => {
+    if (!filme) {
+      Vibration.vibrate(500);
+      return Alert.alert("Ops!", "Você deve digitar um filme!");
     }
+    Alert.alert("Você procurou por: ", filme);
   };
 
   return (
     <SafeContainer>
       <View style={estilos.subContainer}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={estilos.texto}>
-            <Text>
-              Star Trek? O Poderoso Chefão? A trilogia Senhor dos Anéis?
-            </Text>
+        <Text>Star Trek? O Poderoso Chefão? A trilogia Senhor dos Anéis?</Text>
 
-            <Text>Localize um filme que você viu ou gostaria de ver</Text>
+        <Text>Localize um filme que você viu ou gostaria de ver</Text>
 
-            <View style={estilos.inputFormat}>
-              <MaterialCommunityIcons
-                name="movie-open-play"
-                size={55}
-                color="#5451a6"
-              />
-              <TextInput
-                style={estilos.input}
-                onChangeText={onChangeText}
-                underlineColorAndroid="transparent"
-                value={text}
-                placeholder="Digite o filme"
-                enterKeyHint="search"
-                onSubmitEditing={handleInputSubmit}
-              />
-            </View>
+        <View style={estilos.inputFormat}>
+          <Ionicons name="film" size={44} color="#5451a6" />
+          <TextInput
+            style={estilos.input}
+            onChangeText={filmeDigitado}
+            underlineColorAndroid="transparent"
+            value={filme}
+            placeholder="Digite o filme"
+            placeholderTextColor="#5451a6"
+            maxLength={40}
+            enterKeyHint="search"
+            onSubmitEditing={buscarFilmes}
+            autoFocus
+          />
+        </View>
 
-            <Button title="Procurar" onPress={handleInputSubmit} />
-          </View>
-        </ScrollView>
+        <Button title="Procurar" onPress={buscarFilmes} />
       </View>
     </SafeContainer>
   );
 }
 
 const estilos = StyleSheet.create({
+  subContainer: {
+    flex: 1,
+    padding: 16,
+  },
   input: {
-    height: 40,
-    margin: 12,
     borderWidth: 1,
-    padding: 10,
-    width: "80%",
+    padding: 8,
+    flex: 0.95,
+    borderColor: "#5451a6",
   },
   inputFormat: {
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  texto: {
-    padding: 10,
+    marginVertical: 8,
   },
 });
