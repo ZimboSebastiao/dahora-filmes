@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import notFound from "../../assets/images/404.jpg";
+import notFound from "../../assets/images/notfound.webp";
 import { Entypo } from "@expo/vector-icons";
 
 export default function ListaVazia() {
@@ -16,8 +16,8 @@ export default function ListaVazia() {
 
 const estilos = StyleSheet.create({
   imagem: {
-    height: 150,
-    width: "90%",
+    height: 420,
+    width: "100%",
   },
   texto: {
     fontWeight: "bold",
