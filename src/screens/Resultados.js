@@ -3,6 +3,7 @@ import React from "react";
 import SafeContainer from "../components/SafeContainer";
 import { api, apiKey } from "../services/api-movidb";
 import { useState, useEffect } from "react";
+import CardFilme from "../components/CardFilme";
 
 // Prop route
 // Prop especial e definida pelo react Navigation. Através dela é possivel acessar valores passados por meio de navegação entre elas
@@ -47,7 +48,7 @@ export default function Resultados({ route }) {
             keyExtractor={(item) => item.id}
             // Prop que irá renderizar cada item/filme em um componente
             renderItem={({ item }) => {
-              return <Text>{item.title}</Text>;
+              return <CardFilme filme={item} />;
             }}
           />
         </View>
