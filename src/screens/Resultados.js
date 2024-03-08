@@ -39,7 +39,14 @@ export default function Resultados({ route }) {
     <SafeContainer>
       <View style={estilos.subContainer}>
         <Text style={estilos.texto}>Você buscou por: {filme}</Text>
-        <View style={estilos.viewFilmes}></View>
+        <View style={estilos.viewFilmes}>
+          <FlatList
+            data={resultados}
+            renderItem={({ item }) => {
+              return <Text>{item.title}</Text>;
+            }}
+          />
+        </View>
       </View>
     </SafeContainer>
   );
