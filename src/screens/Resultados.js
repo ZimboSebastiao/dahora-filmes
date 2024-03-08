@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import CardFilme from "../components/CardFilme";
 import Separador from "../components/Separador";
 import ListaVazia from "./ListaVazia";
+import Loading from "../components/Loading";
 
 // Prop route
 // Prop especial e definida pelo react Navigation. Através dela é possivel acessar valores passados por meio de navegação entre elas
