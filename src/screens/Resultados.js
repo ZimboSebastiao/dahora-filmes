@@ -4,6 +4,8 @@ import SafeContainer from "../components/SafeContainer";
 import { api, apiKey } from "../services/api-movidb";
 import { useState, useEffect } from "react";
 import CardFilme from "../components/CardFilme";
+import Separador from "../components/Separador";
+import ListaVazia from "./ListaVazia";
 
 // Prop route
 // Prop especial e definida pelo react Navigation. Através dela é possivel acessar valores passados por meio de navegação entre elas
@@ -47,8 +49,8 @@ export default function Resultados({ route }) {
             renderItem={({ item }) => {
               return <CardFilme filme={item} />;
             }}
-            ListEmptyComponent={() => <Text>Nenhum filme localizado</Text>}
-            ItemSeparatorComponent={() => <Text>********</Text>}
+            ListEmptyComponent={ListaVazia}
+            ItemSeparatorComponent={Separador}
           />
         </View>
       </View>
@@ -70,6 +72,8 @@ const estilos = StyleSheet.create({
   },
   texto: {
     marginVertical: 8,
+    fontSize: 20,
+    fontWeight: "bold",
   },
   viewFilmes: {
     marginVertical: 8,
