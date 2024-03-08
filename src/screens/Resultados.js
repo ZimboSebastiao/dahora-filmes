@@ -56,7 +56,7 @@ export default function Resultados({ route }) {
       <View style={estilos.subContainer}>
         <Text style={estilos.texto}>Você buscou por: {filme}</Text>
 
-        {loading && <ActivityIndicator size="large" color="#5451a6" />}
+        {loading && <Loading />}
 
         {!loading && (
           <View style={estilos.viewFilmes}>
