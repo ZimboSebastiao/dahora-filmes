@@ -24,7 +24,7 @@ export default function Resultados({ route }) {
             api_key: apiKey,
           },
         });
-        console.log(resposta.data);
+        console.log(resposta.data.results);
       } catch (error) {
         console.error("Deu ruim " + error.message);
       }
