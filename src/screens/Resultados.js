@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import SafeContainer from "../components/SafeContainer";
 import { api, apiKey } from "../services/api-movidb";
@@ -12,6 +18,9 @@ import ListaVazia from "./ListaVazia";
 export default function Resultados({ route }) {
   // State para gerenciar os resultados da busca na API
   const [resultados, setResultados] = useState([]);
+
+  // State para gerenciar o loading (mostrar/esconder)
+  const [loading, setLoading] = useState(true);
 
   // capturando o parâmetro filme vindo de BuscarFilmes
   const { filme } = route.params;
@@ -31,6 +40,9 @@ export default function Resultados({ route }) {
 
         // Adicionando os resultados ao state
         setResultados(resposta.data.results);
+
+        // desativamos o loading
+        setLoading(false);
       } catch (error) {
         console.error("Deu ruim " + error.message);
       }
@@ -42,17 +54,22 @@ export default function Resultados({ route }) {
     <SafeContainer>
       <View style={estilos.subContainer}>
         <Text style={estilos.texto}>Você buscou por: {filme}</Text>
-        <View style={estilos.viewFilmes}>
-          <FlatList
-            data={resultados}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              return <CardFilme filme={item} />;
-            }}
-            ListEmptyComponent={ListaVazia}
-            ItemSeparatorComponent={Separador}
-          />
-        </View>
+
+        {loading && <ActivityIndicator size="large" color="#5451a6" />}
+
+        {!loading && (
+          <View style={estilos.viewFilmes}>
+            <FlatList
+              data={resultados}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => {
+                return <CardFilme filme={item} />;
+              }}
+              ListEmptyComponent={ListaVazia}
+              ItemSeparatorComponent={Separador}
+            />
+          </View>
+        )}
       </View>
     </SafeContainer>
   );
