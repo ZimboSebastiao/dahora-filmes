@@ -12,7 +12,7 @@ import moment from "moment";
 
 export default function Detalhes({ route }) {
   const { filme } = route.params;
-  const { poster_path } = filme;
+  const { backdrop_path } = filme;
 
   return (
     <SafeContainer>
@@ -20,8 +20,8 @@ export default function Detalhes({ route }) {
         <ImageBackground
           style={estilos.imagemFundo}
           source={
-            poster_path
-              ? { uri: `https://image.tmdb.org/t/p/w500/${poster_path}` }
+            backdrop_path
+              ? { uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}` }
               : imagemAlternativa
           }
         >
