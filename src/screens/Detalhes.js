@@ -8,19 +8,35 @@ import {
 import React from "react";
 import SafeContainer from "../components/SafeContainer";
 import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
+import moment from "moment";
 
-export default function Detalhes() {
+export default function Detalhes({ route }) {
+  const { filme } = route.params;
+  const { poster_path } = filme;
+
   return (
     <SafeContainer>
       <View style={estilos.subContainer}>
-        <ImageBackground style={estilos.imagemFundo} source={imagemAlternativa}>
-          <Text style={estilos.titulo}> Título do filme...</Text>
+        <ImageBackground
+          style={estilos.imagemFundo}
+          source={
+            poster_path
+              ? { uri: `https://image.tmdb.org/t/p/w500/${poster_path}` }
+              : imagemAlternativa
+          }
+        >
+          <Text style={estilos.titulo}> {filme.title}</Text>
         </ImageBackground>
         <View style={estilos.conteudo}>
           <ScrollView>
-            <Text style={[estilos.texto, estilos.avaliacao]}>Avaliação</Text>
-            <Text style={[estilos.texto, estilos.lancamento]}>Lançamento</Text>
-            <Text style={[estilos.texto, estilos.descricao]}>Descrição</Text>
+            <Text style={[estilos.texto, estilos.avaliacao]}>
+              Avaliação: {filme.vote_average} | Lançamento:{" "}
+              {moment(filme.release_date).format("DD-MM-YYYY")}
+            </Text>
+
+            <Text style={[estilos.texto, estilos.descricao]}>
+              {filme.overview}
+            </Text>
           </ScrollView>
         </View>
       </View>
