@@ -16,7 +16,11 @@ export default function CardFilme({ filme }) {
       <Image
         resizeMode="cover"
         style={estilos.imagem}
-        source={{ uri: `https://image.tmdb.org/t/p/w500/${poster_path}` }}
+        source={
+          poster_path
+            ? { uri: `https://image.tmdb.org/t/p/w500/${poster_path}` }
+            : imagemAlternativa
+        }
       />
       <View style={estilos.corpo}>
         <Text style={estilos.titulo}>{title}</Text>

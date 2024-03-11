@@ -1,12 +1,16 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 export default function Loading() {
-  const [loading, setLoading] = useState(true);
   return (
-    <View>
+    <View style={estilos.viewLoading}>
       <ActivityIndicator size="large" color="#5451a6" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
+const estilos = StyleSheet.create({
+  viewLoading: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+});
