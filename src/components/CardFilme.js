@@ -9,10 +9,14 @@ import {
 import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+// Hook necessário pois não estamos em uma tela com acesso à prop navigation
+import { useNavigation } from "@react-navigation/core";
 
 export default function CardFilme({ filme }) {
-  // Extraindo as informações do filme (titulo e imagem de capa)
   const { title, poster_path } = filme;
+
+  // Acessar recursos de navegação
+  const navigation = useNavigation();
   return (
     <View style={estilos.card}>
       <Image
@@ -27,7 +31,10 @@ export default function CardFilme({ filme }) {
       <View style={estilos.corpo}>
         <Text style={estilos.titulo}>{title}</Text>
         <View style={estilos.botoes}>
-          <Pressable style={estilos.botao}>
+          <Pressable
+            style={estilos.botao}
+            onPress={() => navigation.navigate("Detalhes")}
+          >
             <Text style={estilos.textoBotao}>
               <FontAwesome5 name="book-open" size={12} />
               Leia mais
