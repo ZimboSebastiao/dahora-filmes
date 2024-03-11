@@ -7,6 +7,8 @@ import {
   Pressable,
 } from "react-native";
 import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function CardFilme({ filme }) {
   // Extraindo as informações do filme (titulo e imagem de capa)
@@ -26,10 +28,16 @@ export default function CardFilme({ filme }) {
         <Text style={estilos.titulo}>{title}</Text>
         <View style={estilos.botoes}>
           <Pressable style={estilos.botao}>
-            <Text style={estilos.textoBotao}>Leia mais</Text>
+            <Text style={estilos.textoBotao}>
+              <FontAwesome5 name="book-open" size={12} />
+              Leia mais
+            </Text>
           </Pressable>
           <Pressable style={estilos.botao}>
-            <Text style={estilos.textoBotao}>Salvar</Text>
+            <Text style={estilos.textoBotao}>
+              <Ionicons name="add-circle" size={12} />
+              Salvar
+            </Text>
           </Pressable>
         </View>
       </View>
