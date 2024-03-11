@@ -30,12 +30,12 @@ export default function Detalhes({ route }) {
         <View style={estilos.conteudo}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={[estilos.texto, estilos.avaliacao]}>
-              Avaliação: {filme.vote_average} | Lançamento:{" "}
+              Avaliação: {filme.vote_average.toFixed(2)} | Lançamento:{" "}
               {moment(filme.release_date).format("DD-MM-YYYY")}
             </Text>
 
             <Text style={[estilos.texto, estilos.descricao]}>
-              {filme.overview}
+              {filme.overview || "Filme sem descrição"}
             </Text>
           </ScrollView>
         </View>
