@@ -31,7 +31,9 @@ export default function Detalhes({ route }) {
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={[estilos.texto, estilos.avaliacao]}>
               Avaliação: {filme.vote_average.toFixed(2)} | Lançamento:{" "}
-              {moment(filme.release_date).format("DD-MM-YYYY")}
+              {filme.release_date
+                ? moment(filme.release_date).format("DD-MM-YYYY")
+                : "Indisponível"}
             </Text>
 
             <Text style={[estilos.texto, estilos.descricao]}>
