@@ -28,7 +28,7 @@ export default function Detalhes({ route }) {
           <Text style={estilos.titulo}> {filme.title}</Text>
         </ImageBackground>
         <View style={estilos.conteudo}>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={[estilos.texto, estilos.avaliacao]}>
               Avaliação: {filme.vote_average} | Lançamento:{" "}
               {moment(filme.release_date).format("DD-MM-YYYY")}
