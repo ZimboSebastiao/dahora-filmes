@@ -1,7 +1,38 @@
-import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ScrollView,
+  Alert,
+} from "react-native";
 import SafeContainer from "../components/SafeContainer";
 
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default function Favoritos() {
+  // State para registra os dados carregados do storage
+  const [listaFavoritos, setListaFavoritos] = useState([]);
+
+  // useEffect será disparado assim que o usuário entrar na tela Favoritos (portanto, somente uma vez)
+  useEffect(() => {
+    const carregarFavoritos = async () => {
+      try {
+        const dados = await AsyncStorage.getItem("@favoritosdahora");
+        if (dados) {
+          setListaFavoritos(JSON.parse(dados));
+        }
+      } catch (error) {
+        console.log("Erro ao  carregar os dados: " + error);
+        Alert.alert("Erro", "Erro ao carregar os dados");
+      }
+    };
+    carregarFavoritos();
+  }, []);
+
+  console.log(listaFavoritos);
+
   return (
     <SafeContainer>
       <View style={estilos.subContainer}>
