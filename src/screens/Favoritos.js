@@ -45,7 +45,7 @@ export default function Favoritos() {
             {" "}
             Quantidade: {listaFavoritos.length}
           </Text>
-          <Pressable style={estilos.botao}>
+          <Pressable style={estilos.botaoExcluirFavoritos}>
             <Text style={estilos.textoBotao}>Excluir favoritos</Text>
           </Pressable>
         </View>
@@ -75,13 +75,23 @@ const estilos = StyleSheet.create({
     padding: 16,
     width: "100%",
   },
-  subtitulo: {
-    fontFamily: "NotoSans",
-    fontWeight: "bold",
-    marginVertical: 8,
-    fontSize: 18,
-  },
   texto: {
     marginVertical: 8,
+  },
+  viewFavoritos: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  botaoExcluirFavoritos: {
+    borderWidth: 1,
+    borderColor: "red",
+    padding: 8,
+    borderRadius: 4,
+    backgroundColor: "red",
+  },
+  textoBotao: {
+    color: "white",
   },
 });
