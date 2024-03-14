@@ -3,6 +3,7 @@ import SafeContainer from "../components/SafeContainer";
 import backgroundImage from "../../assets/images/bpp.png";
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Pressable, Text, View, ImageBackground } from "react-native";
+import { Button } from "@rneui/base";
 
 export default function Home({ navigation }) {
   return (
@@ -14,11 +15,12 @@ export default function Home({ navigation }) {
           style={estilos.background}
         >
           <View style={estilos.viewLogo}>
-            <Text style={estilos.titulo}>Dá Hora Filmes</Text>
+            <Text style={estilos.titulo}>Welcome To Flixity</Text>
           </View>
 
           <View style={estilos.viewBotoes}>
-            <Pressable
+            <Button
+              color="error"
               style={estilos.botao}
               onPress={() => navigation.navigate("BuscarFilmes")}
             >
@@ -26,8 +28,9 @@ export default function Home({ navigation }) {
                 <Ionicons name="search" size={12} color="white" />
                 Buscar Filmes
               </Text>
-            </Pressable>
-            <Pressable
+            </Button>
+            <Button
+              color="error"
               style={estilos.botao}
               onPress={() => {
                 navigation.navigate("Favoritos");
@@ -37,7 +40,7 @@ export default function Home({ navigation }) {
                 <Ionicons name="star" size={12} color="gold" />
                 Favoritos
               </Text>
-            </Pressable>
+            </Button>
           </View>
 
           <View style={estilos.viewRodape}>
@@ -73,22 +76,22 @@ const estilos = StyleSheet.create({
     justifyContent: "center",
   },
   viewLogo: {
-    flex: 3,
-    // width: "80%",
+    flex: 4.5,
     justifyContent: "flex-end",
     alignItems: "center",
   },
   titulo: {
-    fontFamily: "Monoton-Regular",
-    fontSize: 28,
-    color: "#5a51a6",
+    fontFamily: "Roboto",
+    fontSize: 32,
+    color: "#ffffff",
+    fontWeight: "bold",
   },
 
   viewBotoes: {
-    flex: 2,
+    flex: 1,
     flexDirection: "row",
     alignItems: "flex-start",
-    width: "80%",
+    width: "100%",
     justifyContent: "space-evenly",
   },
   botao: {

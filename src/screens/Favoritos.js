@@ -19,7 +19,10 @@ export default function Favoritos() {
   useEffect(() => {
     const carregarFavoritos = async () => {
       try {
+        // Acessamos o storage criado previamente e guardamos as strings de dados.
         const dados = await AsyncStorage.getItem("@favoritosdahora");
+
+        // Se houver dados, transformamos em objetos (JSON.parse) e atualizamos o state com a lista de favoritos
         if (dados) {
           setListaFavoritos(JSON.parse(dados));
         }
