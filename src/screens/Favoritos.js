@@ -40,8 +40,19 @@ export default function Favoritos() {
     <SafeContainer>
       <View style={estilos.subContainer}>
         <View style={estilos.viewFavoritos}>
-          <Text style={estilos.texto}></Text>
+          <Text style={estilos.texto}>
+            {" "}
+            Quantidade: {listaFavoritos.length}
+          </Text>
+          <Pressable style={estilos.botao}>
+            <Text style={estilos.textoBotao}>Excluir favoritos</Text>
+          </Pressable>
         </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {listaFavoritos.map((filme) => {
+            return <Text key={filme.id}>{filme.title}</Text>;
+          })}
+        </ScrollView>
       </View>
     </SafeContainer>
   );

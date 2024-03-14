@@ -1,55 +1,56 @@
 import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
+  Alert,
   Image,
   Pressable,
-  Alert,
+  StyleSheet,
+  Text,
   Vibration,
+  View,
 } from "react-native";
 import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-// Hook necessário pois não estamos em uma tela com acesso à prop navigation
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function CardFilme({ filme }) {
   const { title, poster_path } = filme;
-
-  // Acessar recursos de navegação
   const navigation = useNavigation();
 
   const salvar = async () => {
-    // Alert.alert("Favoritos", "Salvando...");
+    //Alert.alert("Favoritos", "Salvando...");
 
     try {
-      // 1) Verificar/carregar os favoritos armazenados no AsyncStorage. Usamos o getItem do Asyncstorage para analisar se existe um armazenamento com o nome indicado (@favoritosdahora). Existindo, ele é carregado para const filmesFavoritos. Se não existir, será criado posteriomente.
+      /* 1) Verificar/carregar os favoritos armazenados no AsyncStorage.
+      Usamos o getItem do AsyncStorage para analisar se existe um armazenamento com o nome indicado (@favoritosdahora). Existindo, ele é carregado para
+      a const filmesFavoritos. Se não existir, será criado posteriormente. */
       const filmesFavoritos = await AsyncStorage.getItem("@favoritosdahora");
 
-      // 2) Verificar/Criar uma lista de filmes favoritos (dados). Se filmes favoritos existir (ou seja, tem dados no storage), pegamos estes dados (strings) e convertemos em objeto (JSON.parse). Caso contrário, listaDeFilmes será um array vazio.
+      /* 2) Verificar/criar uma lista de filmes favoritos (dados).
+      Se filmesFavoritos existir (ou seja, tem dados no storage), pegamos
+      estes dados (strings) e convertemos em objeto (JSON.parse). Caso contrário,
+      listaDeFilmes será um array vazio. */
       const listaDeFilmes = filmesFavoritos ? JSON.parse(filmesFavoritos) : [];
 
-      // 3) Verificar se já tem algum filme na lista
+      /* 3) Verificar se já tem algum filme na lista 
+      Usamos a função some() para avaliar se o ID do filme dentro da listaDeFilmes é o mesmo de um filme exibido na tela do app (nos Cards). Se for, retorna TRUE indicando que o filme já foi salvo
+      em algum momento. Caso contrário, retorna FALSE indicando que o
+      filme ainda não foi salvo. */
       const jaTemFilme = listaDeFilmes.some((filmeNaLista) => {
         return filmeNaLista.id === filme.id;
       });
 
-      // 4) Se o filme não estiver na lista, então vamos colocá-lo
-
-      // 4.1) Se já temfilme, avisaremos so usuário
-
+      /* 4) Verificação, alerta e registro do filme */
+      /* 4.1) Se ja tem filme, avisaremos ao usuário */
       if (jaTemFilme) {
         Alert.alert("Ops!", "Você já salvou este filme!");
         Vibration.vibrate();
         return;
       }
 
-      // 4.2) Senão, vamos colocar na lista
+      /* 4.2) Senão, vamos colocar na lista */
       listaDeFilmes.push(filme);
 
-      // 5) Usamos o AsyncStorage para gravar no armazenamento offline do dispositivo
+      /* 5) Usamos o AsyncStorage para gravar no armazenamento offline do dispositivo */
       await AsyncStorage.setItem(
         "@favoritosdahora",
         JSON.stringify(listaDeFilmes)
@@ -58,7 +59,7 @@ export default function CardFilme({ filme }) {
       Alert.alert("Favoritos", `${title} foi salvo com sucesso!`);
     } catch (error) {
       console.log("Erro: " + error);
-      Alert.alert("Erro", "Ocorreu um erro ao salvar filme...");
+      Alert.alert("Erro", "Ocorreu um erro ao salvar o filme...");
     }
   };
 
@@ -74,21 +75,19 @@ export default function CardFilme({ filme }) {
         }
       />
       <View style={estilos.corpo}>
-        <Text style={estilos.titulo}>{title}</Text>
+        <Text style={estilos.titulo}> {title} </Text>
         <View style={estilos.botoes}>
           <Pressable
             style={estilos.botao}
             onPress={() => navigation.navigate("Detalhes", { filme })}
           >
             <Text style={estilos.textoBotao}>
-              <FontAwesome5 name="book-open" size={12} />
-              Leia mais
+              <Ionicons name="book" size={12} /> Leia mais
             </Text>
           </Pressable>
           <Pressable style={estilos.botao} onPress={salvar}>
             <Text style={estilos.textoBotao}>
-              <Ionicons name="add-circle" size={12} />
-              Salvar
+              <Ionicons name="add-circle" size={12} /> Salvar
             </Text>
           </Pressable>
         </View>
