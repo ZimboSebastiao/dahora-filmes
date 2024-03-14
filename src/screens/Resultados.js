@@ -10,7 +10,7 @@ import SafeContainer from "../components/SafeContainer";
 import { api, apiKey } from "../services/api-movidb";
 import { useState, useEffect } from "react";
 import CardFilme from "../components/CardFilme";
-import Separador from "../components/Separador";
+// import Separador from "../components/Separador";
 import ListaVazia from "./ListaVazia";
 import Loading from "../components/Loading";
 
@@ -54,7 +54,7 @@ export default function Resultados({ route }) {
   return (
     <SafeContainer>
       <View style={estilos.subContainer}>
-        <Text style={estilos.texto}>Você buscou por: {filme}</Text>
+        <Text style={estilos.texto}>You searched for: {filme}</Text>
 
         {loading && <Loading />}
 
@@ -67,7 +67,7 @@ export default function Resultados({ route }) {
                 return <CardFilme filme={item} />;
               }}
               ListEmptyComponent={ListaVazia}
-              ItemSeparatorComponent={Separador}
+              // ItemSeparatorComponent={Separador}
             />
           </View>
         )}
@@ -92,6 +92,13 @@ const estilos = StyleSheet.create({
     marginVertical: 8,
     fontSize: 20,
     fontWeight: "bold",
+    borderColor: "#00aced",
+    backgroundColor: "#00aced",
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 8,
+    color: "white",
+    fontStyle: "italic",
   },
   viewFilmes: {
     marginVertical: 8,

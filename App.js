@@ -22,7 +22,7 @@ export default function App() {
         <Stack.Navigator
           initialRouteName="Home"
           screenOptions={{
-            headerStyle: { backgroundColor: "#5452a6" },
+            headerStyle: { backgroundColor: "#1D1D1D" },
             headerTintColor: "white",
           }}
         >
@@ -41,9 +41,12 @@ export default function App() {
           <Stack.Screen
             name="BuscarFilmes"
             component={BuscarFilmes}
-            options={{ title: "Qual filme quer pesquisar?" }}
+            options={{ title: "" }}
           />
-          <Stack.Screen name="Resultados" component={Resultados} />
+          <Stack.Screen name="Resultados" 
+          component={Resultados}
+          options={{ title: "Results" }} 
+          />
           <Stack.Screen
             name="Detalhes"
             component={Detalhes}

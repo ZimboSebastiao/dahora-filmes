@@ -1,7 +1,8 @@
 import {
   Alert,
-  Image,
+
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   Vibration,
@@ -11,6 +12,9 @@ import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Card } from '@rneui/themed';
+import { Image } from '@rneui/themed';
+
 
 export default function CardFilme({ filme }) {
   const { title, poster_path } = filme;
@@ -75,62 +79,58 @@ export default function CardFilme({ filme }) {
         }
       />
       <View style={estilos.corpo}>
-        <Text style={estilos.titulo}> {title} </Text>
+        <Card.Title style={estilos.titulo}> {title} </Card.Title>
         <View style={estilos.botoes}>
           <Pressable
             style={estilos.botao}
             onPress={() => navigation.navigate("Detalhes", { filme })}
           >
-            <Text style={estilos.textoBotao}>
-              <Ionicons name="book" size={12} /> Leia mais
-            </Text>
+            <Text style={estilos.textoBotao}>Details</Text>
           </Pressable>
           <Pressable style={estilos.botao} onPress={salvar}>
-            <Text style={estilos.textoBotao}>
-              <Ionicons name="add-circle" size={12} /> Salvar
-            </Text>
+            <Text style={estilos.textoBotao}>Save</Text>
           </Pressable>
         </View>
       </View>
-    </View>
+    </View >
+
   );
 }
 
 const estilos = StyleSheet.create({
   card: {
-    marginVertical: 4,
+    marginVertical: 8,
     flexDirection: "row",
-    borderWidth: 2,
-    borderColor: "#5451a6",
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: "space-evenly",
   },
   imagem: {
-    height: 150,
+    height: 100,
     width: 100,
     flex: 1,
+    borderRadius: 10,
   },
   corpo: { flex: 2 },
   titulo: {
-    backgroundColor: "#5451a6",
     color: "white",
-    textAlign: "center",
-    paddingVertical: 8,
-    fontSize: 16,
+    textAlign: "left",
+    paddingVertical: 6,
+    marginLeft: 8,
+    fontSize: 14,
   },
   botoes: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginTop: 8,
   },
   botao: {
-    borderColor: "#5451a6",
+    borderColor: "#00aced",
     borderWidth: 1,
+    borderRadius: 10,
     padding: 8,
   },
   textoBotao: {
-    color: "#5451a6",
-    fontSize: 12,
+    color: "#00aced",
+    fontSize: 10,
+    fontWeight: "bold",
     textTransform: "uppercase",
   },
 });

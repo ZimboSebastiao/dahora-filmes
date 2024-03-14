@@ -5,11 +5,11 @@ import {
   Vibration,
   Alert,
   Button,
-  TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import SafeContainer from "../components/SafeContainer";
-import { Ionicons } from "@expo/vector-icons";
+import { SearchBar } from '@rneui/themed';
+import { Icon } from '@rneui/themed';
 
 export default function BuscarFilmes({ navigation }) {
   const [filme, setFilme] = useState("");
@@ -24,55 +24,69 @@ export default function BuscarFilmes({ navigation }) {
   const buscarFilmes = () => {
     if (!filme) {
       Vibration.vibrate(500);
-      return Alert.alert("Ops!", "Você deve digitar um filme!");
+      return Alert.alert("Ops!", "You must enter the name of the movie!");
     }
     // Redirecionamento para tela de resultados passando o filme para ela através do segundo parâmetro do método navigate. obs: não se esqueça de definir a prop navigation no componente
     navigation.navigate("Resultados", { filme });
   };
 
   return (
-    <SafeContainer>
+    <SafeContainer >
       <View style={estilos.subContainer}>
-        <Text>Star Trek? O Poderoso Chefão? A trilogia Senhor dos Anéis?</Text>
-
-        <Text>Localize um filme que você viu ou gostaria de ver</Text>
-
+        
         <View style={estilos.inputFormat}>
-          <Ionicons name="film" size={44} color="#5451a6" />
-          <TextInput
-            style={estilos.input}
-            onChangeText={filmeDigitado}
+          <SearchBar
+            ref={search => this.search = search}
+            containerStyle={estilos.searchContainer} 
+            inputContainerStyle={estilos.inputContainerStyle}
+            round
             underlineColorAndroid="transparent"
+            onChangeText={filmeDigitado}
             value={filme}
-            placeholder="Digite o filme"
-            placeholderTextColor="#5451a6"
+            placeholder="Search"
+            placeholderTextColor="#00aced"
             maxLength={40}
             enterKeyHint="search"
             onSubmitEditing={buscarFilmes}
             autoFocus
+            
           />
+
+ 
+          <Icon name='manage-search' size={38} color='#00aced' onPress={buscarFilmes} style={estilos.icon} /> 
+
         </View>
 
-        <Button title="Procurar" onPress={buscarFilmes} />
       </View>
     </SafeContainer>
   );
 }
 
 const estilos = StyleSheet.create({
+
   subContainer: {
     flex: 1,
-    padding: 16,
-  },
-  input: {
-    borderWidth: 1,
-    padding: 8,
-    flex: 0.95,
-    borderColor: "#5451a6",
+    width: "100%"
   },
   inputFormat: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical: 8,
+    flexDirection: "row", 
+    alignItems: "center",
+    justifyContent: "space-evenly",
+
   },
+  searchContainer: {
+    width:"82%",
+    backgroundColor: "transparent",
+    borderTopWidth: 0, // Remove a borda superior
+    borderBottomWidth: 0, // Remove a borda inferior
+  },
+  icon: {
+    backgroundColor: "#2D2D2D",
+    borderRadius: 10,
+    height: 45,
+    width: 45,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  
 });

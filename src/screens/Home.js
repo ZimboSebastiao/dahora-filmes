@@ -14,9 +14,12 @@ export default function Home({ navigation }) {
           resizeMode="cover"
           style={estilos.background}
         >
+
           <View style={estilos.viewLogo}>
-            <Text style={estilos.titulo}>Welcome To Flixity</Text>
+            <Text style={estilos.titulo}>Let´s play your favorite movie in Flixity</Text>
+            <Text style={estilos.texto}>Movie & tv information updates movie trailer</Text>
           </View>
+          
 
           <View style={estilos.viewBotoes}>
             <Button
@@ -24,7 +27,7 @@ export default function Home({ navigation }) {
               style={estilos.botao}
               onPress={() => navigation.navigate("BuscarFilmes")}
             >
-              <Text style={estilos.textoBotao}>Buscar Filmes</Text>
+              <Text style={estilos.textoBotao}>Search movies</Text>
             </Button>
             <Button
               color="error"
@@ -33,7 +36,7 @@ export default function Home({ navigation }) {
                 navigation.navigate("Favoritos");
               }}
             >
-              <Text style={estilos.textoBotao}>Favoritos</Text>
+              <Text style={estilos.textoBotao}>Favorites</Text>
             </Button>
           </View>
 
@@ -42,14 +45,14 @@ export default function Home({ navigation }) {
               style={estilos.botaoRodape}
               onPress={() => navigation.navigate("Privacidade")}
             >
-              <Text style={estilos.textoBotao}>Privacidade</Text>
+              <Text style={estilos.textoBotao}>Privacy</Text>
             </Pressable>
 
             <Pressable
               style={estilos.botaoRodape}
               onPress={() => navigation.navigate("Sobre")}
             >
-              <Text style={estilos.textoBotao}>Sobre</Text>
+              <Text style={estilos.textoBotao}>About</Text>
             </Pressable>
           </View>
         </ImageBackground>
@@ -62,30 +65,43 @@ const estilos = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: "center",
+    opacity: 0.8,
   },
   viewLogo: {
     flex: 4.5,
+    backgroundColor: "rgba(0, 0, 78, 0.3)",
     justifyContent: "flex-end",
     alignItems: "center",
   },
   titulo: {
     fontFamily: "Roboto",
-    fontSize: 32,
+    fontSize: 28,
     color: "#ffffff",
     fontWeight: "bold",
+    textAlign: "center",
+  },
+  texto: {
+    fontFamily: "Roboto",
+    fontSize: 12,
+    color: "#BABABA",
+    textAlign: "center",
+    paddingBottom: 10,
+    paddingTop: 16,
   },
 
   viewBotoes: {
-    flex: 2,
+    flex: 1,
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
-    justifyContent: "space-evenly",
+    padding: 10,
+    justifyContent: "space-between",
+    backgroundColor: "rgba(0, 0, 78, 0.3)",
   },
   botao: {
     color: "#5451a6",
     padding: 16,
-    backgroundColor: "#5451a6",
+
   },
   textoBotao: {
     color: "#fff",
@@ -95,7 +111,7 @@ const estilos = StyleSheet.create({
   },
   viewRodape: {
     width: "100%",
-    backgroundColor: "rgba(84, 81, 166, 0.4)",
+    backgroundColor: "rgba(1, 1, 1, 0.9)",
     flex: 0.5,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -104,4 +120,5 @@ const estilos = StyleSheet.create({
   botaoRodape: {
     padding: 16,
   },
+
 });
