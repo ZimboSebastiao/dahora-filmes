@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import SafeContainer from "../components/SafeContainer";
 import logo from "../../assets/images/bp.jpg";
 import { Ionicons } from "@expo/vector-icons";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, Text, View, ImageBackground } from "react-native";
 
 export default function Home({ navigation }) {
   return (
