@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import SafeContainer from "../components/SafeContainer";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/bp.jpg";
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Pressable, Text, View } from "react-native";
 
@@ -70,8 +70,8 @@ const estilos = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 144,
-    height: 144,
+    width: "99%",
+    height: "100%",
   },
   titulo: {
     fontFamily: "Monoton-Regular",

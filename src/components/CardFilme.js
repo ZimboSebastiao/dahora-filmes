@@ -5,6 +5,7 @@ import {
   View,
   Image,
   Pressable,
+  Alert,
 } from "react-native";
 import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -17,6 +18,17 @@ export default function CardFilme({ filme }) {
 
   // Acessar recursos de navegação
   const navigation = useNavigation();
+
+  const salvar = async () => {
+    // Alert.alert("Favoritos", "Salvando...");
+
+    try {
+    } catch (error) {
+      console.log("Erro: " + error);
+      Alert.alert("Erro", "Ocorreu um erro ao salvar filme...");
+    }
+  };
+
   return (
     <View style={estilos.card}>
       <Image
@@ -40,7 +52,7 @@ export default function CardFilme({ filme }) {
               Leia mais
             </Text>
           </Pressable>
-          <Pressable style={estilos.botao}>
+          <Pressable style={estilos.botao} onPress={salvar}>
             <Text style={estilos.textoBotao}>
               <Ionicons name="add-circle" size={12} />
               Salvar

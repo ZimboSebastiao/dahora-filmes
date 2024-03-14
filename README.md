@@ -22,6 +22,10 @@ Exemplo de app nativo multiplataforma criado com React Native e Expo.
 - Instalação da lib **Axios**
 - Configuração do `services/api-moviedb.js` contendo a programação básica de acesso à API para uso em diferentes partes do app.
 
+## Branch 09
+
+`AsyncStorage` é uma lib mantida pela equipe do expo que permite armazenar dados **offline** em formato de `string` no dispositivo do usuário. É uma lib semelhante à API web `localStorage` usada em sites
+
 ## Branch 07
 
 - Loading usando `ActivityIndicator`
