@@ -6,6 +6,7 @@ import {
   Image,
   Pressable,
   Alert,
+  Vibration,
 } from "react-native";
 import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -27,13 +28,34 @@ export default function CardFilme({ filme }) {
       // 1) Verificar/carregar os favoritos armazenados no AsyncStorage. Usamos o getItem do Asyncstorage para analisar se existe um armazenamento com o nome indicado (@favoritosdahora). Existindo, ele é carregado para const filmesFavoritos. Se não existir, será criado posteriomente.
       const filmesFavoritos = await AsyncStorage.getItem("@favoritosdahora");
 
-      // 2) Verificar/Criar uma lista de filmes favoritos (dados)
+      // 2) Verificar/Criar uma lista de filmes favoritos (dados). Se filmes favoritos existir (ou seja, tem dados no storage), pegamos estes dados (strings) e convertemos em objeto (JSON.parse). Caso contrário, listaDeFilmes será um array vazio.
+      const listaDeFilmes = filmesFavoritos ? JSON.parse(filmesFavoritos) : [];
 
       // 3) Verificar se já tem algum filme na lista
+      const jaTemFilme = listaDeFilmes.some((filmeNaLista) => {
+        return filmeNaLista.id === filme.id;
+      });
 
       // 4) Se o filme não estiver na lista, então vamos colocá-lo
 
+      // 4.1) Se já temfilme, avisaremos so usuário
+
+      if (jaTemFilme) {
+        Alert.alert("Ops!", "Você já salvou este filme!");
+        Vibration.vibrate();
+        return;
+      }
+
+      // 4.2) Senão, vamos colocar na lista
+      listaDeFilmes.push(filme);
+
       // 5) Usamos o AsyncStorage para gravar no armazenamento offline do dispositivo
+      await AsyncStorage.setItem(
+        "@favoritosdahora",
+        JSON.stringify(listaDeFilmes)
+      );
+
+      Alert.alert("Favoritos", `${title} foi salvo com sucesso!`);
     } catch (error) {
       console.log("Erro: " + error);
       Alert.alert("Erro", "Ocorreu um erro ao salvar filme...");
