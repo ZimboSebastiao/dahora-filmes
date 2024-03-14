@@ -24,10 +24,7 @@ export default function Home({ navigation }) {
               style={estilos.botao}
               onPress={() => navigation.navigate("BuscarFilmes")}
             >
-              <Text style={estilos.textoBotao}>
-                <Ionicons name="search" size={12} color="white" />
-                Buscar Filmes
-              </Text>
+              <Text style={estilos.textoBotao}>Buscar Filmes</Text>
             </Button>
             <Button
               color="error"
@@ -36,10 +33,7 @@ export default function Home({ navigation }) {
                 navigation.navigate("Favoritos");
               }}
             >
-              <Text style={estilos.textoBotao}>
-                <Ionicons name="star" size={12} color="gold" />
-                Favoritos
-              </Text>
+              <Text style={estilos.textoBotao}>Favoritos</Text>
             </Button>
           </View>
 
@@ -48,20 +42,14 @@ export default function Home({ navigation }) {
               style={estilos.botaoRodape}
               onPress={() => navigation.navigate("Privacidade")}
             >
-              <Text style={estilos.textoBotao}>
-                <Ionicons name="lock-closed" size={16} color="white" />
-                Privacidade
-              </Text>
+              <Text style={estilos.textoBotao}>Privacidade</Text>
             </Pressable>
 
             <Pressable
               style={estilos.botaoRodape}
               onPress={() => navigation.navigate("Sobre")}
             >
-              <Text style={estilos.textoBotao}>
-                <Ionicons name="information-circle" size={16} color="white" />
-                Sobre
-              </Text>
+              <Text style={estilos.textoBotao}>Sobre</Text>
             </Pressable>
           </View>
         </ImageBackground>
@@ -88,7 +76,7 @@ const estilos = StyleSheet.create({
   },
 
   viewBotoes: {
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
     alignItems: "flex-start",
     width: "100%",
@@ -107,7 +95,7 @@ const estilos = StyleSheet.create({
   },
   viewRodape: {
     width: "100%",
-    backgroundColor: "#5451a6",
+    backgroundColor: "rgba(84, 81, 166, 0.4)",
     flex: 0.5,
     flexDirection: "row",
     justifyContent: "space-between",
