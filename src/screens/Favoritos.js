@@ -52,13 +52,19 @@ export default function Favoritos({ navigation }) {
           text: "Confirmar",
           style: "destructive",
           onPress: async () => {
+            // Removemos o nosso storage de favoritos
             await AsyncStorage.removeItem("@favoritosdahora");
 
+            // Atualizamos o state para que sejam removidos da tela
             setListaFavoritos([]);
           },
         },
       ]
     );
+  };
+
+  const excluir = async (filme) => {
+    await AsyncStorage.removeItem(`@favoritosdahora:${filme.id}`);
   };
 
   return (
@@ -69,12 +75,14 @@ export default function Favoritos({ navigation }) {
             {" "}
             Quantidade: {listaFavoritos.length}
           </Text>
-          <Pressable
-            style={estilos.botaoExcluirFavoritos}
-            onPress={excluirTodosFavoritos}
-          >
-            <Text style={estilos.textoBotao}>Excluir favoritos</Text>
-          </Pressable>
+          {listaFavoritos.length !== 0 && (
+            <Pressable
+              style={estilos.botaoExcluirFavoritos}
+              onPress={excluirTodosFavoritos}
+            >
+              <Text style={estilos.textoBotao}>Excluir favoritos</Text>
+            </Pressable>
+          )}
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
           {listaFavoritos.map((filme) => {
@@ -87,7 +95,10 @@ export default function Favoritos({ navigation }) {
                   <Text style={estilos.titulo}>{filme.title}</Text>
                 </Pressable>
 
-                <Pressable style={estilos.botaoExcluir}>
+                <Pressable
+                  style={estilos.botaoExcluir}
+                  onPress={() => excluir(filme)}
+                >
                   <Ionicons name="trash" size={25} color="red" />
                 </Pressable>
               </View>
