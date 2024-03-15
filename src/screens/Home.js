@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import SafeContainer from "../components/SafeContainer";
 import backgroundImage from "../../assets/images/bpp.png";
-import { Ionicons } from "@expo/vector-icons";
 import { Image, Pressable, Text, View, ImageBackground } from "react-native";
 import { Button } from "@rneui/base";
 
@@ -14,12 +13,14 @@ export default function Home({ navigation }) {
           resizeMode="cover"
           style={estilos.background}
         >
-
           <View style={estilos.viewLogo}>
-            <Text style={estilos.titulo}>Let´s play your favorite movie in Flixity</Text>
-            <Text style={estilos.texto}>Movie & tv information updates movie trailer</Text>
+            <Text style={estilos.titulo}>
+              Let´s play your favorite movie in Flixity
+            </Text>
+            <Text style={estilos.texto}>
+              Movie & tv information updates movie trailer
+            </Text>
           </View>
-          
 
           <View style={estilos.viewBotoes}>
             <Button
@@ -101,7 +102,6 @@ const estilos = StyleSheet.create({
   botao: {
     color: "#5451a6",
     padding: 16,
-
   },
   textoBotao: {
     color: "#fff",
@@ -120,5 +120,4 @@ const estilos = StyleSheet.create({
   botaoRodape: {
     padding: 16,
   },
-
 });

@@ -63,8 +63,23 @@ export default function Favoritos({ navigation }) {
     );
   };
 
-  const excluir = async (filme) => {
-    await AsyncStorage.removeItem(`@favoritosdahora:${filme.id}`);
+  const excluir = async (idFilme) => {
+    // Alert.alert("filme: " + idFilme);
+
+    // Gerar uma nova lista de favoritos excepto o filme removido
+
+    const novaListaDeFavoritos = listaFavoritos.filter(
+      (filmeDaLista) => filmeDaLista.id !== idFilme
+    );
+
+    // Atualizar o storage (memoria fisica ) com os dados da nova lista sem o o fime removido
+    setListaFavoritos(novaListaDeFavoritos);
+
+    // Atualiza o storage com os dados danova lista sem o filme removido
+    await AsyncStorage.setItem(
+      "@favoritosdahora",
+      JSON.stringify(novaListaDeFavoritos)
+    );
   };
 
   return (
@@ -97,7 +112,7 @@ export default function Favoritos({ navigation }) {
 
                 <Pressable
                   style={estilos.botaoExcluir}
-                  onPress={() => excluir(filme)}
+                  onPress={() => excluir(filme.id)}
                 >
                   <Ionicons name="trash" size={25} color="red" />
                 </Pressable>
