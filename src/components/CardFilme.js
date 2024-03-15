@@ -1,6 +1,5 @@
 import {
   Alert,
-
   Pressable,
   ScrollView,
   StyleSheet,
@@ -12,9 +11,8 @@ import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Card } from '@rneui/themed';
-import { Image } from '@rneui/themed';
-
+import { Card } from "@rneui/themed";
+import { Image } from "@rneui/themed";
 
 export default function CardFilme({ filme }) {
   const { title, poster_path } = filme;
@@ -92,8 +90,7 @@ export default function CardFilme({ filme }) {
           </Pressable>
         </View>
       </View>
-    </View >
-
+    </View>
   );
 }
 

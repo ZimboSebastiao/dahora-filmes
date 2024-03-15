@@ -11,6 +11,7 @@ import SafeContainer from "../components/SafeContainer";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
+import { Image } from "@rneui/themed";
 
 export default function Favoritos() {
   // State para registra os dados carregados do storage
@@ -77,6 +78,8 @@ const estilos = StyleSheet.create({
   },
   texto: {
     marginVertical: 8,
+    color: "white",
+    fontSize: 18,
   },
   viewFavoritos: {
     flexDirection: "row",
@@ -87,11 +90,24 @@ const estilos = StyleSheet.create({
   botaoExcluirFavoritos: {
     borderWidth: 1,
     borderColor: "red",
-    padding: 8,
-    borderRadius: 4,
+    padding: 5,
+    borderRadius: 10,
     backgroundColor: "red",
   },
   textoBotao: {
     color: "white",
+  },
+  titulo: {
+    color: "white",
+  },
+  item: {
+    borderWidth: 1,
+    borderColor: "#00aced",
+    padding: 8,
+    marginBottom: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#00aced",
+    borderRadius: 10,
   },
 });
