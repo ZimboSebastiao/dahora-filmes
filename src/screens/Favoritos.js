@@ -51,6 +51,11 @@ export default function Favoritos({ navigation }) {
         {
           text: "Confirmar",
           style: "destructive",
+          onPress: async () => {
+            await AsyncStorage.removeItem("@favoritosdahora");
+
+            setListaFavoritos([]);
+          },
         },
       ]
     );
