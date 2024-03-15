@@ -12,8 +12,9 @@ import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "@rneui/themed";
+import imagemAlternativa from "../../assets/images/foto-alternativa.jpg";
 
-export default function Favoritos() {
+export default function Favoritos({ navigation }) {
   // State para registra os dados carregados do storage
   const [listaFavoritos, setListaFavoritos] = useState([]);
 
@@ -36,7 +37,24 @@ export default function Favoritos() {
     carregarFavoritos();
   }, []);
 
-  console.log(listaFavoritos);
+  // console.log(listaFavoritos)
+
+  const excluirTodosFavoritos = async () => {
+    Alert.alert(
+      "Excluir Todos?",
+      "Tem certeza que deseja excluir todos os favoritos?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Confirmar",
+          style: "destructive",
+        },
+      ]
+    );
+  };
 
   return (
     <SafeContainer>
@@ -46,7 +64,10 @@ export default function Favoritos() {
             {" "}
             Quantidade: {listaFavoritos.length}
           </Text>
-          <Pressable style={estilos.botaoExcluirFavoritos}>
+          <Pressable
+            style={estilos.botaoExcluirFavoritos}
+            onPress={excluirTodosFavoritos}
+          >
             <Text style={estilos.textoBotao}>Excluir favoritos</Text>
           </Pressable>
         </View>
@@ -54,12 +75,15 @@ export default function Favoritos() {
           {listaFavoritos.map((filme) => {
             return (
               <View key={filme.id} style={estilos.item}>
-                <Pressable style={estilos.botaoFilme}>
+                <Pressable
+                  style={estilos.botaoFilme}
+                  onPress={() => navigation.navigate("Detalhes", { filme })}
+                >
                   <Text style={estilos.titulo}>{filme.title}</Text>
                 </Pressable>
 
                 <Pressable style={estilos.botaoExcluir}>
-                  <Ionicons name="trash" size={16} color="red" />
+                  <Ionicons name="trash" size={25} color="red" />
                 </Pressable>
               </View>
             );
