@@ -22,6 +22,19 @@ Exemplo de app nativo multiplataforma criado com React Native e Expo.
 - Instalação da lib **Axios**
 - Configuração do `services/api-moviedb.js` contendo a programação básica de acesso à API para uso em diferentes partes do app.
 
+## Branch 10 - Processo de Build
+
+### Roteiro geral para o build usando Expo EAS
+
+1. Acessar a sua conta Expo e criar um projeto no EXPO EAS: https://expo.dev
+2. Instalar o eas-cli: `npm install --global eas-cli`
+3. Adicionar o id do projeto ao aplicativo: `npx create-expo-app flixity`
+4. Verificar a conta logada: `eas whoami`
+   4.1 Se não estiver logado use: `eas login`
+   4.2 Se estiver logado e quiser deslogar (ou trocar de usuário): `eas logout`
+5. Configurar o build (compilação): `eas build:configure`
+6. iniciar o processo de Build/compilação: `eas build --profile preview`
+
 ## Branch 09
 
 `AsyncStorage` é uma lib mantida pela equipe do expo que permite armazenar dados **offline** em formato de `string` no dispositivo do usuário. É uma lib semelhante à API web `localStorage` usada em sites

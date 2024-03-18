@@ -34,3 +34,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 .env
+flixity/
+eas.json
+eas.json
